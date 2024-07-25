@@ -1,13 +1,12 @@
 from fastapi import FastAPI
+import asyncio
+from random import randint
 
 app = FastAPI()
 
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+    # async wait for 5 seconds
+    await asyncio.sleep(5)
+    return {"magic_number": randint(1, 100)}
